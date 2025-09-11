@@ -32,7 +32,7 @@ public class Neuron {
 
     public static double[] lernen(double[] lernziel, int wdh, double[][] binaer){
         double gesamtfehler = 1.0;
-        double[] neueGewichte = new double[]{0.0,0.0,0.0};
+        double[] neueGewichte = new double[binaer[0].length]; // Initialisierung der Gewichte mit 0.0
 
         while (gesamtfehler != 0.0) {
 
@@ -40,7 +40,7 @@ public class Neuron {
             double Output;
             gesamtfehler = 0.0;
 
-            for (int i = 0; i < wdh; i++) {
+            for (int i = 0; i < wdh; i++) { 
                 input = binaer[i];
                 Output = Perceptron(input, neueGewichte);
                 neueGewichte = gewichteAnpassen(Output, lernziel[i], neueGewichte,input);

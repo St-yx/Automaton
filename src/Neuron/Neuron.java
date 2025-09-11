@@ -23,17 +23,7 @@ public class Neuron {
             double[] zielvektor = operation.getZielvektor();
             double[][] binaer = BinGen.Generator(n);
             double[] w = lernen(zielvektor, binaer.length, binaer);
-/*             
-            double[] zielvektor = operation.getZielvektor();
-            double[] w = lernen(zielvektor);
-            
-            double[][] binaer = {
-                {0.0,0.0,1.0},
-                {0.0,1.0,1.0},
-                {1.0,0.0,1.0},
-                {1.0,1.0,1.0},
-            };
-*/
+
             for (double[] input : binaer) {
                 System.out.printf("%.1f %s %.1f ist %.1f%n", input[0],operation.name(), input[1], Perceptron(input, w));
             }
@@ -56,27 +46,6 @@ public class Neuron {
                 neueGewichte = gewichteAnpassen(Output, lernziel[i], neueGewichte,input);
                 gesamtfehler += Toolbelt.quadrat(Output - lernziel[i]);
             }
-/*
-            input = new double[]{0.0,0.0,1.0};
-            Output = Perceptron(input, neueGewichte);
-            neueGewichte = gewichteAnpassen(Output, lernziel[0], neueGewichte,input);
-            gesamtfehler += Toolbelt.quadrat(Output - lernziel[0]);
-
-            input = new double[]{0.0,1.0,1.0};
-            Output = Perceptron(input, neueGewichte);
-            neueGewichte = gewichteAnpassen(Output, lernziel[1], neueGewichte,input);
-            gesamtfehler += Toolbelt.quadrat(Output - lernziel[1]);
-
-            input = new double[]{1.0,0.0,1.0};
-            Output = Perceptron(input, neueGewichte);
-            neueGewichte = gewichteAnpassen(Output, lernziel[2], neueGewichte,input);
-            gesamtfehler += Toolbelt.quadrat(Output - lernziel[2]);
-
-            input = new double[]{1.0,1.0,1.0};
-            Output = Perceptron(input, neueGewichte);
-            neueGewichte = gewichteAnpassen(Output, lernziel[3], neueGewichte,input);
-            gesamtfehler += Toolbelt.quadrat(Output - lernziel[3]);
-*/
         }
         return neueGewichte;
 

@@ -16,9 +16,4 @@ public class Toolbelt {
         }
         return sum;
     }
-/* 
-    public static double[][] binaer(int x){
-
-    }
-*/
 }

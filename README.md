@@ -1,4 +1,4 @@
-# Neuronales Netzwerk – Perzeptron Lernprojekt
+# Neuronales Netzwerk – Perzeptron
 
 ## Überblick
 Dieses Projekt ist eine einfache Java-Implementierung eines **Perzeptrons**, das grundlegende logische Operationen (z. B. **AND, OR, NAND, NOR**) lernen kann.  

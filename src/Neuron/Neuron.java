@@ -18,14 +18,22 @@ public class Neuron {
                 }
             }
 
-            int n = 2; // Anzahl Eingabewerte für Logikformel
+            int n = 4; // Anzahl Eingabewerte für Logikformel
 
-            double[] zielvektor = operation.getZielvektor();
+            double[] zielvektor = operation.computeZielvektor(n);
             double[][] binaer = BinGen.Generator(n);
             double[] w = lernen(zielvektor, binaer.length, binaer);
 
             for (double[] input : binaer) {
-                System.out.printf("%.1f %s %.1f ist %.1f%n", input[0],operation.name(), input[1], Perceptron(input, w));
+                StringBuilder sb = new StringBuilder();
+                for (int i = 0; i < input.length - 1; i++) {
+                    sb.append(input[i]).append(" ");
+                    if (i < input.length - 2) {
+                        sb.append(" ");
+                    }
+                }
+                double out = Perceptron(input, w);
+                System.out.printf("%s -> %s = %.1f%n", sb.toString(), operation.name(), out);
             }
         }           
     }      

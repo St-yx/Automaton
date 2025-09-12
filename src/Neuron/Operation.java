@@ -1,26 +1,50 @@
 package Neuron;
 
 public enum Operation {
-    OR(new double[]{0.0,1.0,1.0,1.0}),
-    NOR(new double[]{1.0,0.0,0.0,0.0}),
-    AND(new double[]{0.0,0.0,0.0,1.0}),
-    NAND(new double[]{1.0,1.0,1.0,0.0});
+    OR, NOR, AND, NAND;
 
-    private final double[] zielvektor;
+    public double[] computeZielvektor(int n) {
+        int reihen = (int) Math.pow(2, n);
+        double[] ziel = new double[reihen];
 
-    Operation(double[] zielvektor){
-        this.zielvektor = zielvektor;
+        double[][] binaer = BinGen.Generator(n);
+
+        for (int i = 0; i < reihen; i++) {
+                double[] input = new double[n];
+                System.arraycopy(binaer[i], 0, input, 0, n);
+
+                boolean result = false;
+
+             switch (this) {
+                case OR:
+                    result = false;
+                    for (double v : input) if (v == 1.0) { result = true; break; }
+                    break;
+                case NOR:
+                    result = true;
+                    for (double v : input) if (v == 1.0) { result = false; break; }
+                    break;
+                case AND:
+                    result = true;
+                    for (double v : input) if (v == 0.0) { result = false; break; }
+                    break;
+                case NAND:
+                    result = false;
+                    for (double v : input) if (v == 0.0) { result = true; break; }
+                    if (!result) result = false;
+                    break;
+            }
+            ziel[i] = result ? 1.0 : 0.0;
+        }
+        return ziel;
     }
 
-    public double[] getZielvektor(){
-        return zielvektor;
-    }
-
-    public static Operation fromString(String eingabe){
+        public static Operation fromString(String eingabe){
         try {
             return Operation.valueOf(eingabe.toUpperCase());
         } catch(IllegalArgumentException exception){
             return null;
         }
     }
+
 }

@@ -1,5 +1,10 @@
 package Neuron;
 
+import java.io.FileWriter;
+import java.io.IOException;
+import java.util.List;
+import java.io.File;
+
 public class Toolbelt {
     public static double quadrat(double x){
         return x * x;
@@ -15,5 +20,24 @@ public class Toolbelt {
             sum += v1[i] * v2[i];
         }
         return sum;
+    }
+
+    public static void writeFile(List<String> lines, String filename) {
+        try {
+            File dir = new File("Data");
+            if (!dir.exists()) {
+                dir.mkdir();
+            }
+
+            try (FileWriter writer = new FileWriter(new File(dir, filename))) {
+                for (String line : lines) {
+                    writer.write(line + System.lineSeparator());
+                }
+            }
+            System.out.println("Ausgabe wurde nach " + filename + " geschrieben.");
+
+        } catch (IOException e) {
+            System.err.println("Fehler beim Schreiben der Datei: " + e.getMessage());
+        }
     }
 }

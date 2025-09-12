@@ -40,4 +40,14 @@ public class Toolbelt {
             System.err.println("Fehler beim Schreiben der Datei: " + e.getMessage());
         }
     }
+
+        public static double[] gewichteAnpassen(double Output, double desired, double[] w, double[] input){
+
+        double[] neu = new double[w.length];
+        for (int i = 0; i < neu.length; i++) {
+            neu[i] = w[i] - (Output - desired) * input[i];
+
+        }
+        return neu;
+    }
 }

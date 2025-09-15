@@ -10,6 +10,7 @@ public class Toolbelt {
         return x * x;
     }
 
+    // Standart Step-Function
     public static double StepFn(double x){
         return(x < 0.0)?0.0:1.0;
     }
@@ -22,6 +23,7 @@ public class Toolbelt {
         return sum;
     }
 
+    // Ausgelagertes Schreiben in eine Datei ~/Data
     public static void writeFile(List<String> lines, String filename) {
         try {
             File dir = new File("Data");

@@ -1,5 +1,7 @@
 package Neuron;
 
+
+// Generiert eine Binärmatrix mit n Variablen und einer Bias-Spalte
 public class BinGen {
     public static double [][] Generator(int n){ 
         int zeilen = (int) Math.pow(2, n);
